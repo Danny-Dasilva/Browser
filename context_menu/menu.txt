@@ -1,0 +1,79 @@
+Save as... CTRL+S
+Print... CTRL+P
+
+----
+
+Select All
+----
+View page source CTRL+U
+Inspect CTRL+SHIFT+I
+
+
+############
+inside a input
+
+undo
+
+----
+
+Cut
+Copy
+Paste
+Delete
+
+----
+
+Select All
+
+
+############
+tabs
+
+New tab to the right
+
+----
+
+Reload tab
+Mute tab
+Duplicate tab
+
+
+
+---- 
+
+Close tab VTRL +W
+Close other tabs
+Close tabs to the right
+
+
+#############
+Settings
+
+new tab CTRL+T
+new window CTRL+N
+---- 
+New Identity CTRL+SHIFT+U
+New Tor IP CTRL+SHIFT+L
+---- 
+History !clock
+downloads !downloads
+bookmarks 
+
+---- 
+Zoom 
+----
+Edit
+
+----
+Save page as
+print
+----
+
+Settings
+Help
+
+
+---- 
+Quit CTRL Q
+
+----
