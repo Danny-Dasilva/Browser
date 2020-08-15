@@ -1,0 +1,35 @@
+
+$colors: (
+    primary: #dee1e6,
+    primary-highlight: rgba(150, 150, 150, 0.25),
+    secondary: #fff,
+    secondary-highlight: #EEEEEE,
+    secondary-focus: #4285F4,
+    secondary-icon: #5F6368,
+    secondary-icon-disabled: #BABCBE,
+    main-black: #202124,
+    main-red: #D32F2F,
+    secondary-red: #ff0000,
+);
+
+
+$colors-dark: (
+    primary: #dee1e6,
+    primary-highlight: rgba(150, 150, 150, 0.25),
+    secondary: #fff,
+    secondary-highlight: #EEEEEE,
+    secondary-focus: #FF7F50,
+    secondary-icon: #5F6368,
+    secondary-icon-disabled: #BABCBE,
+    main-black: #202124,
+    main-red: #D32F2F,
+    secondary-red: #ff0000,
+);
+:root {
+    @each $name, $color in $colors {
+        --color-#{$name}: #{$color};
+    }
+}
+@function color($color-name) {
+    @return var(--color-#{$color-name});
+}
