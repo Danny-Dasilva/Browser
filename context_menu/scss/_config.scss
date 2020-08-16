@@ -2,31 +2,41 @@
 $colors: (
     primary: #dee1e6,
     primary-highlight: rgba(150, 150, 150, 0.25),
+    primary-text: #202124,
     secondary: #fff,
     secondary-highlight: #EEEEEE,
     secondary-focus: #4285F4,
     secondary-icon: #5F6368,
+    secondary-text: #3a3c42, 
     secondary-icon-disabled: #BABCBE,
-    main-black: #202124,
+    tri-hover: #D6D8DA,
     main-red: #D32F2F,
     secondary-red: #ff0000,
 );
 
 
 $colors-dark: (
-    primary: #dee1e6,
+    primary: #23272a,
     primary-highlight: rgba(150, 150, 150, 0.25),
-    secondary: #fff,
-    secondary-highlight: #EEEEEE,
+    primary-text: #fff,
+    secondary: #2c2f33,
+    secondary-highlight: #464b52, 
     secondary-focus: #FF7F50,
-    secondary-icon: #5F6368,
+    secondary-icon: #fff,
+    secondary-text: #fff, 
     secondary-icon-disabled: #BABCBE,
+    tri-hover: #2c2f33,
     main-black: #202124,
     main-red: #D32F2F,
     secondary-red: #ff0000,
 );
-:root {
+[data-theme="light"] {
     @each $name, $color in $colors {
+        --color-#{$name}: #{$color};
+    }
+}
+[data-theme="dark"] {
+    @each $name, $color in $colors-dark {
         --color-#{$name}: #{$color};
     }
 }

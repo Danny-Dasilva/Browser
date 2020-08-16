@@ -1,0 +1,5 @@
+change shield to person
+add arrow to the left of the star for show history
+-> page name - url 
+
+redo tabs css

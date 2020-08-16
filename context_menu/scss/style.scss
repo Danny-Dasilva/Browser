@@ -19,7 +19,7 @@ html, body {height: 100%; margin: 0;}
     right: 0;
     height: 100%;
     z-index: 10;
-    color: color(main-black);
+    color: color(primary-text);
   }
 
   #window-controls {
@@ -217,14 +217,14 @@ html, body {height: 100%; margin: 0;}
             display: none;
         }
         &:not([disabled]):hover {
-            background-color: #D6D8DA;
+            background-color: color(tri-hover);
         }
         &:not([disabled]):hover .special:before {
             opacity: 0;
         }
         &:not([disabled]):active {
             transition: 0.05s;
-            background-color: #C9CBCD;
+            background-color: color(tri-hover);
         }
 
     }
@@ -235,10 +235,10 @@ html, body {height: 100%; margin: 0;}
             color: color(secondary-icon);
         }
         .domain {
-            color: color(main-black);
+            color: color(primary-text);
         }
         input {
-            color: color(main-black);
+            color: color(primary-text);
             width: 100%;
             border-width: 0;
             outline: none;
@@ -305,7 +305,7 @@ body  #main-bar .seperator {
     --color-orange: #FF6347;
     --color-green: #228B22;
     --color-purple: #9665c4;
-    --color-black: var(--color-text-primary);
+    --color-black: color(secondary-text);
     --color-red: #d92027;
     --color-black: #000;
     --internal-light-dark: #f00;
@@ -314,11 +314,11 @@ body  #main-bar .seperator {
   
   body {
     font-family: "Inter", sans-serif;
-    background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
+    background-color: color(primary);
+    color: color(secondary-text);
   }
   span {
-    color: var(--color-text-primary);
+    color: color(secondary-text);
   }
   .is-dark-background{
     background: var(--color-bg-primary);
@@ -330,7 +330,7 @@ body  #main-bar .seperator {
     color: var(--color-purple);
   }
   .is-black {
-    color: var(--color-text-primary);
+    color: color(secondary-text);
   }
   .left {
     text-align: left;
@@ -345,7 +345,7 @@ body  #main-bar .seperator {
     display: flex;
     position: absolute;
     flex-direction: column;
-    background-color: var(--color-bg-secondary);
+    background-color: color(secondary);
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(64, 64, 64, 0.15);
     top: 10;
@@ -361,9 +361,9 @@ body  #main-bar .seperator {
     display: block;
     width: 100%;
     padding: 8px;
-  }
-  .menu-list, ul {
-      list-style-type: none;
+    &, ul {
+        list-style-type: none;
+    }
   }
   .menu-list + .menu-list {
     border-top: 1px solid #ddd;
@@ -371,7 +371,7 @@ body  #main-bar .seperator {
   .menu-sub-list {
     display: none;
     padding: 8px;
-    background-color: var(--color-bg-secondary);
+    background-color: color(secondary);
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(64, 64, 64, 0.15);
     position: absolute;
@@ -381,10 +381,9 @@ body  #main-bar .seperator {
     width: 100%;
     top: 0;
     flex-direction: column;
+
   }
-  .menu-sub-list:hover {
-    display: flex;
-  }
+  
   .menu-item {
     position: relative;
   }
@@ -400,94 +399,81 @@ body  #main-bar .seperator {
     display: flex;
     align-items: center;
     position: relative;
-    background-color: var(--color-bg-secondary);
+    background-color: color(secondary);
+    &:hover {
+        background-color: color(secondary-highlight);
+        display: flex;
+        svg {
+            stroke: color(secondary-text);
+            &.fa {
+                color:  color(secondary-text);
+              }
+          }
+    }
+    svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        stroke: color(secondary-icon);
+        &.fa {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            color: color(secondary-icon);
+        }
+        &:nth-of-type(2) {
+            margin-right: 0;
+            position: absolute;
+            right: 8px;
+          }
+    }
+    span:nth-of-type(2) {
+        margin-right: 0;
+        position: absolute;
+        right: 8px;
+        font-size: x-small;
+    }
+    span.second{
+        color: color(secondary-icon);
+        font-size: small;
+        margin-left: 5px;
+    }
   }
-  .menu-button:hover {
-    background-color: color(secondary-highlight);
-  }
+  
   .menu-button:hover + .menu-sub-list {
     display: flex;
   }
-  .menu-button:hover svg {
-    stroke: var(--color-text-primary);
-  }
-  .menu-button:hover svg.fa {
-      color:  var(--color-text-primary);
-    }
-  .context-button:hover svg.fa {
-    color:  var(--color-text-primary);
-  }
+
+ 
+    
   
-  .menu-button svg {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    stroke: color(secondary-icon);
-  }
-  .menu-button svg.fa {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
-      color: color(secondary-icon);
-    }
-  .context-button svg.fa {
-    height: 30px;
-    margin-right: 10px;
+.menu-button.tor span:nth-of-type(1) {
     color: color(secondary-icon);
-  }
-  .menu-button svg:nth-of-type(2) {
-    margin-right: 0;
-    position: absolute;
-    right: 8px;
-  }
-  .menu-button span:nth-of-type(2) {
-      margin-right: 0;
-      position: absolute;
-      right: 8px;
-      font-size: x-small;
-    }
-    .menu-button span.second{
-      color: color(secondary-icon);
-      font-size: small;
-      margin-left: 5px;
-    }
-  
-    .menu-button.tor span:nth-of-type(1) {
-      color: color(secondary-icon);
-      font-size: small;
-      margin-left: 5px;
-    }
-  .menu-button--delete:hover {
-    color: var(--color-red);
-  }
-  .menu-button--delete:hover svg:first-of-type {
+    font-size: small;
+    margin-left: 5px;
+}
+ 
+  .menu-button--delete:hover svg {
     stroke: var(--color-red);
   }
   .menu-button--orange svg:first-of-type {
     stroke: var(--color-orange);
     color: var(--color-orange);
   }
-  .menu-button--green svg:first-of-type {
-    stroke: var(--color-green);
-  }
-  .menu-button--purple svg:first-of-type {
-    stroke: var(--color-purple);
-  }
-  .menu-button--black svg:first-of-type {
-    stroke: var(--color-black);
-  }
-  .menu-button--checked svg:nth-of-type(2) {
-    stroke: var(--color-purple);
-  }
-  /* .yeeet*/
+
+ 
+  
+  
+  
+  
   
   .context-buttons {
       display: flex;
       flex-direction: row;
       position: relative;
       justify-content: space-between;
-      background-color: var(--color-bg-secondary);
-      color: var(--color-text-primary);
+      background-color: color(secondary);
+      color: color(secondary-text);
     }
   .context-buttons span {
       padding-left: 40px;
@@ -499,8 +485,16 @@ body  #main-bar .seperator {
       border: 0;
       padding: 10px 15px;
       border-radius: 8px;
-      background-color: var(--color-bg-secondary);
+      background-color: color(secondary);
     }
+    .context-button svg.fa {
+        height: 30px;
+        margin-right: 10px;
+        color: color(secondary-icon);
+      }
+      .context-button:hover svg.fa {
+        color:  color(secondary-text);
+      }
     .context-button:hover {
       background-color: color(secondary-highlight);
     }
@@ -508,7 +502,7 @@ body  #main-bar .seperator {
       display: flex;
     }
     .context-button:hover svg {
-      fill: var(--color-text-primary);
+      fill: color(secondary-text);
     }
     .context-button svg {
       width: 100%;
@@ -530,7 +524,7 @@ body  #main-bar .seperator {
       border: 0;
       height: 20px;
       border-radius: 8px;
-      background-color: var(--color-bg-secondary);
+      background-color: color(secondary);
     }
     .settings-button:hover {
       background-color: color(secondary-highlight);
@@ -549,16 +543,16 @@ body  #main-bar .seperator {
     color: color(secondary-icon);
   }
   .menu-button:hover:disabled, .context-button:hover:disabled {
-    background-color: var(--color-bg-secondary);
+    background-color: color(secondary);
   }
   .tor {
     padding: 0px 8px!important;
     font-size: small;
-    
+    &:hover {
+        background-color: color(secondary);
+      }
   }
-  .tor:hover {
-    background-color: var(--color-bg-secondary);
-  }
+  
   .context-button p {
     height: 10px;
   }
@@ -589,10 +583,10 @@ body  #main-bar .seperator {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: var(--color-bg-secondary);
+    background: color(secondary);
   }
   .modal-close {
-    color: var(--color-text-primary);
+    color: color(secondary-text);
     line-height: 50px;
     font-size: 80%;
     position: absolute;
@@ -603,7 +597,7 @@ body  #main-bar .seperator {
     text-decoration: none;
   }
   .modal-close:hover {
-    color: var(--color-text-primary);
+    color: color(secondary-text);
   }
   /* Demo Styles */
   
