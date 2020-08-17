@@ -10,24 +10,35 @@ darkMode = () => {
 let menuDisplay = false
 const toggleMenu = (div, command) => {
     div.style.display = command === "show" ? "block" : "none";
+    // if (div.style.display === "none") {
+    //     x.style.display = "block";
+    //   } else {
+    //     div.style.display = "none";
+    //   }
+
 
 }
 let currentdiv = null
 const setPosition = (div, {top, left}) => {
     div.style.left = `${left}px`;
     div.style.top = `${top}px`;
+    menuVisible = true
+    if (div.style.display === "block") {
+        menuVisible = false
+    }
     hideMenus()
-    toggleMenu(div, "show");
-    currentdiv = div
-    menuDisplay = true
-    console.log("called1")
+    
+    if(menuVisible)toggleMenu(div, "show");
+
 }
-window.addEventListener('mouseup', function(e) {
-    console.log("called")
-});
 
 
 
+// document.addEventListener('click', function(e){
+//     console.log(e.target.id)
+//         if(e.target.id!=="dropdown_menu")
+//         console.log("document Clicked");
+//     });
 const displayMenu = (selector, menu) => {
     let toggle = document.getElementById(selector) 
     let display = document.getElementById(menu) 
