@@ -7,17 +7,25 @@ darkMode = () => {
 }
 // light mode dark mode toggle
 
+let menuDisplay = false
 const toggleMenu = (div, command) => {
     div.style.display = command === "show" ? "block" : "none";
 
 }
-
+let currentdiv = null
 const setPosition = (div, {top, left}) => {
     div.style.left = `${left}px`;
     div.style.top = `${top}px`;
     hideMenus()
     toggleMenu(div, "show");
+    currentdiv = div
+    menuDisplay = true
+    console.log("called1")
 }
+window.addEventListener('mouseup', function(e) {
+    console.log("called")
+});
+
 
 
 const displayMenu = (selector, menu) => {
