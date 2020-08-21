@@ -1,18 +1,20 @@
 var view = $("#tslshow");
 var move = "100px";
 move1 = 100
-var sliderLimit = -750
+var sliderLimit = -800
 let test = document.getElementById('tslshow')
-
+let base = 0
 
 
 function animatio(elem, move, direction) {
-    var left = parseInt(elem.style.left, 10) || 0
+    var left = parseInt(elem.style.left, 10) || 0;
     let end
     if (direction === 'left'){
-        end = left + move 
+        // explanation below just reversed
+        end = (left + move <= base) ? left + move : base;
     } else {
-        end = left - move
+        // ternary op for if value is greater than the limit set it to limit else do current val - move amount 
+        end = (left - move >= sliderLimit) ? left - move : sliderLimit;
     }
 
     elem.animate([
@@ -21,16 +23,12 @@ function animatio(elem, move, direction) {
       ], { 
         duration: 200, //time in ms
       });
-    elem.style.left = `${end}px`
+    elem.style.left = `${end}px`;
 }
 
 
 $("#rightArrow").click(function(){
-    console.log(view.css("left"))
     animatio(test, move1, "right")
-    // var currentPosition = parseInt(view.css("left"));
-    // if (currentPosition >= sliderLimit) view.stop(false,true).animate({left:"-="+move},{ duration: 200})
-
 });
 
 $("#leftArrow").click(function(){
@@ -38,3 +36,4 @@ $("#leftArrow").click(function(){
 
 });
 
+// add min max
