@@ -1,19 +1,17 @@
 var view = $("#tslshow");
-move = 100
+move = 132
 var sliderLimit = -800
 let test = document.getElementById('tslshow')
 let base = 0
 
 let setSliderLimit = (input) => {
     nput = input - 1178
-    console.log(nput)
     sliderLimit = (nput >= 0) ? -nput : 0;
 
-    console.log(sliderLimit, "limit")
 }
-function animatetoEnd(elem) {
+function animateTo(elem, loc) {
     var left = parseInt(elem.style.left, 10) || 0;
-    let end = sliderLimit
+    let end = loc
     elem.animate([
         { left: `${left}px` }, 
         { left: `${end}px` }, 
@@ -53,6 +51,12 @@ $("#leftArrow").click(function(){
 
 });
 
+document.getElementById("leftArrow").addEventListener('dblclick', function(){
+    animateTo(test, 0)
+}, false);
+document.getElementById("rightArrow").addEventListener('dblclick', function(){
+    animateTo(test, sliderLimit)
+}, false);
 
 let width = document.getElementById('tslshow')
 // add min max

@@ -187,7 +187,7 @@
         
         // width for tabs
         let clampedWidth = (width >= 132) ? width : 132;
-        console.log(width)
+       
         tabEl.style.width = width + 'px'
         
         tabEl.removeAttribute('is-small')
@@ -209,11 +209,11 @@
       })
       this.styleEl.innerHTML = styleHTML
       let elemwidth = `${ (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) }px`;
+      //anim functions
       setSliderLimit((this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) )
       this.tabContentEl.style.width = elemwidth
-      animatetoEnd(test)
+      animateTo(test, sliderLimit)
       document.getElementById('tab-window').style.width = elemwidth
-      console.log(document.getElementById('tab-window').style.width, elemwidth)
       this.tabContentEl.nextElementSibling.classList.remove('overflow-shadow')
     }
 
