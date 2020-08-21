@@ -14,7 +14,7 @@
     color: #fff;
 
 }
-
+/* change this based on how many tabs are present */
 #tslshow {
     position: relative;
     left: 0;
@@ -24,26 +24,33 @@
 
 #leftArrow {
 
-    width: 40px;
+    width: 20px;
     height: 40px;
     background: #ff0000;
     float: left;
-    left: 0px;
+    text-align: center;
+}
+#leftArrow svg {
+  display: inline-block;
+  margin: 0 auto;
+    
+}
+#rightArrow {
+
+    width: 20px;
+    height: 40px;
+    background: #ff0000;
+    float: left;
     
 }
 
-#rightArrow {
-
-    width: 40px;
-    height: 40px;
-    background: #ff0000;
-    float: left;
-    right: 0px;
-    top: 0px;
+#rightArrow svg {
+    display: inline-block;
+    margin: 0 auto;
 }
 
 #viewContainer {
-    width: 350px;
+    width: 90%;
     height: 100%;
     float: left;
     

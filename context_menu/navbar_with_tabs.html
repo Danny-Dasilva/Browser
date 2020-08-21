@@ -154,11 +154,13 @@
 
 
 <script>
+    document.documentElement.setAttribute('data-theme', 'light')
     let currentlySelected = 0;
 
-var el = document.querySelector('.chrome-tabs')
-var chromeTabs = new ChromeTabs()
+    var el = document.querySelector('.chrome-tabs')
+    var chromeTabs = new ChromeTabs()
 
-chromeTabs.init(el)
+    chromeTabs.init(el)
+    
 </script>
 </html>

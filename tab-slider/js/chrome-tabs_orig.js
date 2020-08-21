@@ -13,7 +13,7 @@
   const TAB_OVERLAP_DISTANCE =
       TAB_CONTENT_MARGIN * 2 + TAB_CONTENT_OVERLAP_DISTANCE
 
-  const TAB_CONTENT_MIN_WIDTH = 132
+  const TAB_CONTENT_MIN_WIDTH = 24
   const TAB_CONTENT_MAX_WIDTH = 240
 
   const TAB_SIZE_SMALL = 84
@@ -184,12 +184,8 @@
       this.tabEls.forEach((tabEl, i) => {
         const contentWidth = tabContentWidths[i]
         const width = contentWidth + (2 * TAB_CONTENT_MARGIN)
-        
-        // width for tabs
-        let clampedWidth = (width >= 132) ? width : 132;
-        console.log(width)
+
         tabEl.style.width = width + 'px'
-        
         tabEl.removeAttribute('is-small')
         tabEl.removeAttribute('is-smaller')
         tabEl.removeAttribute('is-mini')
@@ -208,12 +204,8 @@
         `
       })
       this.styleEl.innerHTML = styleHTML
-      let elemwidth = `${ (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) }px`;
-      setSliderLimit((this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) )
-      this.tabContentEl.style.width = elemwidth
-      animatetoEnd(test)
-      document.getElementById('tab-window').style.width = elemwidth
-      console.log(document.getElementById('tab-window').style.width, elemwidth)
+
+      this.tabContentEl.style.width = `${ (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) }px`;
       this.tabContentEl.nextElementSibling.classList.remove('overflow-shadow')
     }
 
