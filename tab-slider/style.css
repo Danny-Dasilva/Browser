@@ -1,8 +1,5 @@
-.bstimeslider {
-
-    width: 500px;
+.tab-slider {
     height: 40px;
-    background: #ccc;
     position: relative;
 }
 
@@ -19,7 +16,7 @@
 }
 
 #tslshow {
-    position: absolute;
+    position: relative;
     left: 0;
     width: 1200px;
 
@@ -30,8 +27,9 @@
     width: 40px;
     height: 40px;
     background: #ff0000;
-    position: absolute;
+    float: left;
     left: 0px;
+    
 }
 
 #rightArrow {
@@ -39,16 +37,18 @@
     width: 40px;
     height: 40px;
     background: #ff0000;
-    position: absolute;
+    float: left;
     right: 0px;
+    top: 0px;
 }
 
 #viewContainer {
-    width: 360px;
+    width: 350px;
     height: 100%;
-    background: #00ff00;
-    position: absolute;
-    left: 50%;
-    margin-left: -180px;
+    float: left;
+    
+    
     overflow: hidden;
+    top: 0;
 }
+
