@@ -19,7 +19,7 @@ function animatio(elem, move, direction) {
         { left: `${left}px` }, 
         { left: `${end}px` }, 
       ], { 
-        duration: 200,
+        duration: 200, //time in ms
       });
     elem.style.left = `${end}px`
 }
