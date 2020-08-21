@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title id="title">PrivateTabs</title>
+    <meta name="description" content="Chrome-style tabs in HTML/CSS/JS.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link href="css/chrome-tabs.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<header>
+    <div class="mock-browser fixed no-select">
+        <div class="chrome-tabs" style="--tab-content-margin: 9px">
+            <div class="chrome-tabs-content" style="width: 80%">
+                <!--<div class="chrome-tab" active tab-id="0">
+                  <div class="chrome-tab-dividers"></div>
+                  <div class="chrome-tab-background">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="chrome-tab-geometry-left" viewBox="0 0 214 36"><path d="M17 0h197v36H0v-2c4.5 0 9-3.5 9-8V8c0-4.5 3.5-8 8-8z"/></symbol><symbol id="chrome-tab-geometry-right" viewBox="0 0 214 36"><use xlink:href="#chrome-tab-geometry-left"/></symbol><clipPath id="crop"><rect class="mask" width="100%" height="100%" x="0"/></clipPath></defs><svg width="52%" height="100%"><use xlink:href="#chrome-tab-geometry-left" width="214" height="36" class="chrome-tab-geometry"/></svg><g transform="scale(-1, 1)"><svg width="52%" height="100%" x="-100%" y="0"><use xlink:href="#chrome-tab-geometry-right" width="214" height="36" class="chrome-tab-geometry"/></svg></g></svg>
+                  </div>
+                  <div class="chrome-tab-content">
+                    <div class="chrome-tab-favicon" style="background-image: url('homepage/images/google-favicon.ico')"></div>
+                    <div class="chrome-tab-title">Google</div>
+                    <div class="chrome-tab-drag-handle"></div>
+                    <div class="chrome-tab-close"></div>
+                  </div>
+                </div>-->
+            </div>
+
+            <!--Window min and such controlls -->
+            <div id="window-controls">
+
+                <div class="button" id="min-button">
+
+                    <svg class="icon feather feather-minus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </div>
+                <div class="button" id="max-button">
+                    <svg class="icon feather feather-maximize-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+                <div class="button" id="restore-button">
+
+                    <svg class="icon feather feather-minimize-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                </div>
+                <div class="button" id="close-button">
+                    <svg class="icon feather feather-x" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </div>
+
+            </div>
+
+            <!--/Window min and such controlls -->
+
+            <div class="chrome-tabs-bottom-bar">
+            </div>
+            <!-- Styles to prevent flash after JS initialization -->
+            <style>
+                .chrome-tabs .chrome-tab {
+                    width: 258px
+                }
+
+                .chrome-tabs .chrome-tab:nth-child(1) {
+                    transform: translate3d(0px, 0, 0)
+                }
+
+                .chrome-tabs .chrome-tab:nth-child(2) {
+                    transform: translate3d(239px, 0, 0)
+                }
+            </style>
+        </div>
+        <div class="title-bar">
+            <div id="main-bar">
+                <div disabled class="button" id="back-button" title="Click to go back"   data-ripple>
+                    <svg viewBox="0 0 16 16">
+                        <path d="M16,7H3.8l5.6-5.6L8,0L0,8l8,8l1.4-1.4L3.8,9H16V7z" />
+                    </svg>
+                </div>
+                <div class="button" id="forward-button" title="Click to go forward" 
+                    data-ripple>
+                    <svg viewBox="0 0 16 16">
+                        <path d="M8,0L6.6,1.4L12.2,7H0v2h12.2l-5.6,5.6L8,16l8-8L8,0z" />
+                    </svg>
+                </div>
+                <div class="button" id="refresh"  title="Reload page" data-ripple>
+                    <svg viewBox="0 0 16 16">
+                        <path d="M13.6,2.3C12.2,0.9,10.2,0,8,0C3.6,0,0,3.6,0,8s3.6,8,8,8c3.7,0,6.8-2.5,7.7-6h-2.1c-0.8,2.3-3,4-5.6,4c-3.3,0-6-2.7-6-6 s2.7-6,6-6c1.7,0,3.1,0.7,4.2,1.8L9,7h7V0L13.6,2.3z" />
+                    </svg>
+                </div>
+                <div id="address-bar" class="selected">
+                    <div id="security" class="address-bar-button -show-special" data-ripple>
+                        <svg viewBox="0 0 16 16" class="https">
+                            <path
+                                d="M12.6,5.3h-0.8V3.8C11.8,1.7,10.1,0,8,0S4.2,1.7,4.2,3.8v1.5H3.4C2.6,5.3,1.9,6,1.9,6.9v7.6c0,0.8,0.7,1.5,1.5,1.5h9.1 c0.8,0,1.5-0.7,1.5-1.5V6.9C14.1,6,13.4,5.3,12.6,5.3z M10.4,5.3H5.6V3.8c0-1.3,1.1-2.4,2.4-2.4s2.4,1.1,2.4,2.4V5.3z" />
+                        </svg>
+                        <svg viewBox="0 0 16 16" class="error hide">
+                            <path d="M7.2,10.4h1.6V12H7.2V10.4z M7.2,4h1.6v4.8H7.2V4z M8,0C3.6,0,0,3.6,0,8s3.6,8,8,8c4.4,0,8-3.6,8-8S12.4,0,8,0z M8,14.4 c-3.5,0-6.4-2.9-6.4-6.4S4.5,1.6,8,1.6s6.4,2.9,6.4,6.4S11.5,14.4,8,14.4z" />
+                        </svg>
+                     
+                    </div>
+                    <div id="address">
+                    
+                        <input type="text" id="search"value="https://www.google.com/" >
+
+                    </div>
+                    <div id="bookmark" class="address-bar-button" data-ripple>
+                        <svg viewBox="0 0 16 16" class="not-favourite hide">
+                            <path d="M16,5.8l-5.8-0.5L8,0L5.8,5.3L0,5.8l4.4,3.8l-1.3,5.6l4.9-3l4.9,3l-1.3-5.6L16,5.8z M8,10.7l-3,1.8l0.8-3.4L3.1,6.8l3.5-0.3 L8,3.3l1.4,3.2l3.5,0.3l-2.7,2.3l0.8,3.4L8,10.7z" />
+                        </svg>
+                        <svg viewBox="0 0 16 16" class="favourite">
+                            <path d="M8,12.2l4.9,3l-1.3-5.6L16,5.8l-5.8-0.5L8,0L5.8,5.3L0,5.8l4.4,3.8l-1.3,5.6L8,12.2z" />
+                        </svg>
+                    </div>
+                </div>
+    
+    
+                <div id="profile" class="button extension" extension-id="4" title="Profile Settings" data-disabled data-ripple>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="fa"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" class=""></path></svg>
+    
+                </div>
+    
+    
+    
+                <div class="seperator"></div>
+                <div class="button" id="settings" title="Update browser settings" data-ripple>
+                    <svg viewBox="0 0 16 16">
+                        <path d="M8,4c1.1,0,2-0.9,2-2S9.1,0,8,0S6,0.9,6,2S6.9,4,8,4z M8,6C6.9,6,6,6.9,6,8s0.9,2,2,2s2-0.9,2-2S9.1,6,8,6z M8,12 c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S9.1,12,8,12z" />
+                    </svg>
+    
+    
+                </div>
+            </div>
+        </div>
+
+        <div class="chrome-tabs-optional-shadow-below-bottom-bar">
+        </div>
+
+
+
+
+       
+        
+
+
+    </div>
+
+</header>
+<body >
+
+
+
+</body>
+
+<script src="js/draggability.min.js"></script>
+<script src="js/chrome-tabs.js"></script>
+
+
+<script>
+    let currentlySelected = 0;
+
+var el = document.querySelector('.chrome-tabs')
+var chromeTabs = new ChromeTabs()
+
+chromeTabs.init(el)
+</script>
+</html>
