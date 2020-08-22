@@ -1,1 +1,3 @@
 min width 132
+Add animation to drag slider
+Fix responsiveness
