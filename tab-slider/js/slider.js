@@ -5,7 +5,8 @@ let test = document.getElementById('tslshow')
 let base = 0
 
 let setSliderLimit = (input) => {
-    nput = input - 1178
+    nput = input - 1046 //default fullscren minus one div
+    console.log(input, "impit")
     sliderLimit = (nput >= 0) ? -nput : 0;
 
 }

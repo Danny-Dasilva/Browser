@@ -10,13 +10,14 @@
   const TAB_CONTENT_MARGIN = 10
   const TAB_CONTENT_OVERLAP_DISTANCE = 1
 
-  
+  const TAB_OVERLAP_DISTANCE =
+      TAB_CONTENT_MARGIN * 2 + TAB_CONTENT_OVERLAP_DISTANCE
 
-  const TAB_CONTENT_MIN_WIDTH = 24
+  const TAB_CONTENT_MIN_WIDTH = 132
   const TAB_CONTENT_MAX_WIDTH = 240
-  const REAL_TAB_CONTENT_MIN_WIDTH = 132
+
   const TAB_SIZE_SMALL = 84
-  const TAB_SIZE_SMALLER = 100
+  const TAB_SIZE_SMALLER = 60
   const TAB_SIZE_MINI = 48
   const NEW_TAB_BUTTON_AREA = 180
 
@@ -135,7 +136,7 @@
       const tabsContentWidth = this.el.clientWidth - NEW_TAB_BUTTON_AREA
       const tabsCumulativeOverlappedWidth = (numberOfTabs - 1) * TAB_CONTENT_OVERLAP_DISTANCE
       const targetWidth = (tabsContentWidth - (2 * TAB_CONTENT_MARGIN) + tabsCumulativeOverlappedWidth) / numberOfTabs
-      const clampedTargetWidth = Math.max(REAL_TAB_CONTENT_MIN_WIDTH, Math.min(TAB_CONTENT_MAX_WIDTH, targetWidth))
+      const clampedTargetWidth = Math.max(TAB_CONTENT_MIN_WIDTH, Math.min(TAB_CONTENT_MAX_WIDTH, targetWidth))
       const flooredClampedTargetWidth = Math.floor(clampedTargetWidth)
       const totalTabsWidthUsingTarget = (flooredClampedTargetWidth * numberOfTabs) + (2 * TAB_CONTENT_MARGIN) - tabsCumulativeOverlappedWidth
       const totalExtraWidthDueToFlooring = tabsContentWidth - totalTabsWidthUsingTarget
@@ -183,8 +184,12 @@
       this.tabEls.forEach((tabEl, i) => {
         const contentWidth = tabContentWidths[i]
         const width = contentWidth + (2 * TAB_CONTENT_MARGIN)
-  
+        
+        // width for tabs
+        let clampedWidth = (width >= 132) ? width : 132;
+       
         tabEl.style.width = width + 'px'
+        
         tabEl.removeAttribute('is-small')
         tabEl.removeAttribute('is-smaller')
         tabEl.removeAttribute('is-mini')
@@ -203,26 +208,13 @@
         `
       })
       this.styleEl.innerHTML = styleHTML
-      let position = (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0)
-  
-      this.tabContentEl.style.width = `${ position }px`;
-   
-
-
-      setSliderLimit(position)
-      // document.getElementById('tab-window').style.width = `${ (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) }px`;
-      if (position >= 1178) {
- 
-        animateTo(test, sliderLimit, "sliderliomit")
-        document.getElementById('tab-window').style.width = `${ position + 138 }px`;
-
-      }
-      
-      
-
-
-      // animateTo(test, sliderLimit)
-
+      let elemwidth = `${ (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) }px`;
+      //anim functions
+      console.log(elemwidth)
+      setSliderLimit((this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) )
+      this.tabContentEl.style.width = elemwidth
+      animateTo(test, sliderLimit)
+      document.getElementById('tab-window').style.width = elemwidth
       this.tabContentEl.nextElementSibling.classList.remove('overflow-shadow')
     }
 
