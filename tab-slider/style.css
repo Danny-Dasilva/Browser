@@ -1,6 +1,7 @@
 .tab-slider {
     height: 40px;
     position: relative;
+    flex: 1;
 }
 
 .bktibx {
@@ -18,7 +19,6 @@
 #tslshow {
     position: relative;
     left: 0;
-    width: 1200px;
 
 }
 
