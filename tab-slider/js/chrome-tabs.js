@@ -214,7 +214,7 @@
       if (position >= 1178) {
  
         animateTo(test, sliderLimit, "sliderliomit")
-        document.getElementById('tab-window').style.width = `${ position + 138 }px`;
+        document.getElementById('tab-window').style.width = `${ position + 132 }px`;
 
       }
       
