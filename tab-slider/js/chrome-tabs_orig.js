@@ -206,6 +206,7 @@
       this.styleEl.innerHTML = styleHTML
 
       this.tabContentEl.style.width = `${ (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) }px`;
+      console.log(`${ (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) }px`)
       this.tabContentEl.nextElementSibling.classList.remove('overflow-shadow')
     }
 

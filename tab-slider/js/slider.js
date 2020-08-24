@@ -1,17 +1,18 @@
-var view = $("#tslshow");
+
 move = 132
-var sliderLimit = -800
+var sliderLimit = -1670
 let test = document.getElementById('tslshow')
 let base = 0
+let view = document.getElementById('tslshow')
+function setSliderLimit(input) {
+    nput = input - view.clientWidth + 50//default fullscren minus one div
 
-let setSliderLimit = (input) => {
-    nput = input - 1178 //default fullscren minus one div
-    console.log(input, "impit")
     sliderLimit = (nput >= 0) ? -nput : 0;
 
 }
 function animateTo(elem, loc) {
     var left = parseInt(elem.style.left, 10) || 0;
+    
     let end = loc
     elem.animate([
         { left: `${left}px` }, 

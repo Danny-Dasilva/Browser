@@ -15,8 +15,10 @@
   const TAB_CONTENT_MIN_WIDTH = 24
   const TAB_CONTENT_MAX_WIDTH = 240
   const REAL_TAB_CONTENT_MIN_WIDTH = 132
+
+
   const TAB_SIZE_SMALL = 84
-  const TAB_SIZE_SMALLER = 100
+  const TAB_SIZE_SMALLER = 60
   const TAB_SIZE_MINI = 48
   const NEW_TAB_BUTTON_AREA = 180
 
@@ -204,24 +206,22 @@
       })
       this.styleEl.innerHTML = styleHTML
       let position = (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0)
-  
-      this.tabContentEl.style.width = `${ position }px`;
-   
-
-
+      console.log(position, "position", tabsLen, "tabslen", )
+      this.tabContentEl.style.width = `${ position}px`;
+ 
       setSliderLimit(position)
-      // document.getElementById('tab-window').style.width = `${ (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0) }px`;
-      if (position >= 1178) {
+      if (position >= view.clientWidth) {
  
         animateTo(test, sliderLimit, "sliderliomit")
-        document.getElementById('tab-window').style.width = `${ position + 132 }px`;
+        document.getElementById('tab-window').style.width = `${ position +132 }px`;
 
+      } else {
+        animateTo(test, 0)
+        document.getElementById('tab-window').style.width = `${ view.clientWidth }px`;
       }
       
-      
 
 
-      // animateTo(test, sliderLimit)
 
       this.tabContentEl.nextElementSibling.classList.remove('overflow-shadow')
     }

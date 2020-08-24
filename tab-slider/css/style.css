@@ -53,7 +53,7 @@ html, body {
 
 /* remove this  */
 #window-controls {
-  float: left;
+  flex: none;
   position: relative;
   width: 138px;
   height: 40px;

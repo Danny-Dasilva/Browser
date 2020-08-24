@@ -1,7 +1,10 @@
 .tab-slider {
     height: 40px;
     position: relative;
-    flex: 1;
+    width: 100%;
+    display: flex;
+    
+    overflow:hidden
 }
 
 .bktibx {
@@ -47,7 +50,7 @@
     width: 20px;
     height: 46px;
    
-    float: left;
+    float: right;
 }
 #rightArrow:hover {
     background: var(--color-primary-highlight);
@@ -65,9 +68,8 @@
 }
 
 #viewContainer {
-    width: 90%;
+    width: 100%;
     height: 100%;
-    float: left;
     
     
     overflow: hidden;
