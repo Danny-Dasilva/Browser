@@ -96,20 +96,20 @@ function goLeft() {
         let current = parseInt(tab.style.left, 10)
         tab.style.left = `${current - 1.5}px`
         increment = increment - 2
-        console.log(increment, "inc")
+        console.log(tab.style.left)
         const tabEls = changethething.tabEls
         
         
         const currentIndex = tabEls.indexOf(yeet)
         
         const currentTabPositionX = originalTabPositionXX + vector + increment
-        console.log(vector, increment )
+     
         const destinationIndexTarget = closesst(currentTabPositionX, tabPositionss)
         const destinationIndex = Math.max(0, Math.min(tabEls.length, destinationIndexTarget))
-        console.log(destinationIndexTarget, destinationIndex, "in tar")
+       
         if (currentIndex !== destinationIndex) {
             changethething.animateTabMove(yeet, currentIndex, destinationIndex)
-            console.log("called")
+         
         }
 
      
@@ -117,13 +117,36 @@ function goLeft() {
     
 }
 function goRight() {
+    
+    console.log('called')
     if (isDragging === true) {
-        animatio(test, 2, "right")
+        animatio(test, 1.5, "right")
+        let current = parseInt(tab.style.left, 10)
+        tab.style.left = `${current + 1.5}px`
+        increment = increment + 1
+        console.log(tab.style.left, increment, vector)
+        const tabEls = changethething.tabEls
+        
+        
+        const currentIndex = tabEls.indexOf(yeet)
+        
+        const currentTabPositionX = originalTabPositionXX + vector + increment
+
+        const destinationIndexTarget = closesst(currentTabPositionX, tabPositionss)
+        const destinationIndex = Math.max(0, Math.min(tabEls.length, destinationIndexTarget))
+    
+        if (currentIndex !== destinationIndex) {
+            changethething.animateTabMove(yeet, currentIndex, destinationIndex)
+          
+        }
+
+     
     }
+    
 }
 
 repeatWhileMouseOver(document.getElementById("leftArrow"), goLeft, 1);
-repeatWhileMouseOver(document.getElementById("rightArrow"), goRight, 1);
+repeatWhileMouseOver(document.getElementById("rightArrow"), goRight,  1);
 
 
 
