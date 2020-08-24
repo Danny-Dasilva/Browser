@@ -80,14 +80,41 @@ function repeatWhileMouseOver(element, action, time) {
         clearInterval(interval);
     });
 }
-
-var counter = 1;
+let tab 
 function goLeft() {
-    animatio(test, 1.5, "left")
+    if (isDragging === true) {
+        animatio(test, .5, "left")
+        console.log(parseInt(tab.style.left, 10))
+        let current = parseInt(tab.style.left, 10)
+        tab.style.left = `${current - .5}px`
+        // tab.draggabillyDragging.position.x = current - .5
+     
+    }
+    
 }
 function goRight() {
-    animatio(test, 1.5, "right")
+    if (isDragging === true) {
+        animatio(test, 2, "right")
+    }
 }
 
 repeatWhileMouseOver(document.getElementById("leftArrow"), goLeft, 1);
 repeatWhileMouseOver(document.getElementById("rightArrow"), goRight, 1);
+
+
+
+
+
+function setViewport(position) {
+    setSliderLimit(position)
+    
+    if (position >= view.clientWidth) {
+
+    animateTo(test, sliderLimit, "sliderliomit")
+    document.getElementById('tab-window').style.width = `${ position +132 }px`;
+
+    } else {
+    animateTo(test, 0)
+    document.getElementById('tab-window').style.width = `${ view.clientWidth }px`;
+    }
+}

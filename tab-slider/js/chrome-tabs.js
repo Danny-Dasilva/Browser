@@ -209,21 +209,13 @@
 
       this.tabContentEl.style.width = `${ position}px`;
  
-      setSliderLimit(position)
-      if (position >= view.clientWidth) {
- 
-        animateTo(test, sliderLimit, "sliderliomit")
-        document.getElementById('tab-window').style.width = `${ position +132 }px`;
-
-      } else {
-        animateTo(test, 0)
-        document.getElementById('tab-window').style.width = `${ view.clientWidth }px`;
-      }
+      
       
 
 
 
       this.tabContentEl.nextElementSibling.classList.remove('overflow-shadow')
+      return position
     }
 
     createNewTabEl() {
@@ -247,8 +239,10 @@
       this.emit('tabAdd', { tabEl })
       if (!background) this.setCurrentTab(tabEl)
       this.cleanUpPreviouslyDraggedTabs()
-      this.layoutTabs()
+      let position = this.layoutTabs()
       this.setupDraggabilly()
+      //new funct
+      setViewport(position)
     }
 
     setTabCloseEventListener(tabEl) {
@@ -344,6 +338,8 @@
 
         draggabilly.on('dragStart', _ => {
           this.isDragging = true
+          tab = tabEl
+
           isDragging = true
           this.draggabillyDragging = draggabilly
           tabEl.classList.add('chrome-tab-is-dragging')
@@ -380,23 +376,24 @@
 
         draggabilly.on('dragMove', (event, pointer, moveVector) => {
           
-
+          
           // Current index be computed within the event since it can change during the dragMove
           const tabEls = this.tabEls
           const currentIndex = tabEls.indexOf(tabEl)
-
+          console.log(tabEls.indexOf(tabEl))
           const currentTabPositionX = originalTabPositionX + moveVector.x
           const destinationIndexTarget = closest(currentTabPositionX, tabPositions)
           const destinationIndex = Math.max(0, Math.min(tabEls.length, destinationIndexTarget))
-          
           if (currentIndex !== destinationIndex) {
             this.animateTabMove(tabEl, currentIndex, destinationIndex)
           }
+          
         })
       })
     }
 
     animateTabMove(tabEl, originIndex, destinationIndex) {
+      
       if (destinationIndex < originIndex) {
         tabEl.parentNode.insertBefore(tabEl, this.tabEls[destinationIndex])
       } else {
