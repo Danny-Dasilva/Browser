@@ -205,8 +205,10 @@
     var chromeTabs = new ChromeTabs()
 
     chromeTabs.init(el)
+    for (i = 0; i < 20; i++) {
+        chromeTabs.addTab()
+    }
     
-    chromeTabs.addTab()
 </script>
 
 </html>

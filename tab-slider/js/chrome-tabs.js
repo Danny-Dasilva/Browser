@@ -206,7 +206,7 @@
       })
       this.styleEl.innerHTML = styleHTML
       let position = (this.tabEls[0] ? this.tabEls[0].offsetWidth * tabsLen : 0) - (tabsLen > 0 ? ((tabsLen * TAB_CONTENT_MARGIN * 2) - TAB_CONTENT_MIN_WIDTH + TAB_CONTENT_MARGIN) : 0)
-      console.log(position, "position", tabsLen, "tabslen", )
+
       this.tabContentEl.style.width = `${ position}px`;
  
       setSliderLimit(position)
@@ -309,8 +309,9 @@
     setupDraggabilly() {
       const tabEls = this.tabEls
       const tabPositions = this.tabPositions
-
+      
       if (this.isDragging) {
+        
         this.isDragging = false
         this.el.classList.remove('chrome-tabs-is-sorting')
         this.draggabillyDragging.element.classList.remove('chrome-tab-is-dragging')
@@ -320,11 +321,13 @@
         this.draggabillyDragging.positionDrag = noop // Prevent Draggabilly from updating tabEl.style.transform in later frames
         this.draggabillyDragging.destroy()
         this.draggabillyDragging = null
+        
       }
 
       this.draggabillies.forEach(d => d.destroy())
 
       tabEls.forEach((tabEl, originalIndex) => {
+        
         const originalTabPositionX = tabPositions[originalIndex]
         const draggabilly = new Draggabilly(tabEl, {
           axis: 'x',
@@ -336,17 +339,21 @@
 
         draggabilly.on('pointerDown', _ => {
           this.setCurrentTab(tabEl)
+
         })
 
         draggabilly.on('dragStart', _ => {
           this.isDragging = true
+          isDragging = true
           this.draggabillyDragging = draggabilly
           tabEl.classList.add('chrome-tab-is-dragging')
           this.el.classList.add('chrome-tabs-is-sorting')
+          
         })
 
         draggabilly.on('dragEnd', _ => {
           this.isDragging = false
+          isDragging = false
           const finalTranslateX = parseFloat(tabEl.style.left, 10)
           tabEl.style.transform = `translate3d(0, 0, 0)`
 
@@ -372,6 +379,8 @@
         })
 
         draggabilly.on('dragMove', (event, pointer, moveVector) => {
+          
+
           // Current index be computed within the event since it can change during the dragMove
           const tabEls = this.tabEls
           const currentIndex = tabEls.indexOf(tabEl)
@@ -379,7 +388,7 @@
           const currentTabPositionX = originalTabPositionX + moveVector.x
           const destinationIndexTarget = closest(currentTabPositionX, tabPositions)
           const destinationIndex = Math.max(0, Math.min(tabEls.length, destinationIndexTarget))
-
+          
           if (currentIndex !== destinationIndex) {
             this.animateTabMove(tabEl, currentIndex, destinationIndex)
           }
