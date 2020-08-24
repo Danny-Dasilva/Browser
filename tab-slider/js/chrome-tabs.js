@@ -350,6 +350,7 @@
         draggabilly.on('dragEnd', _ => {
           this.isDragging = false
           isDragging = false
+          increment = 0
           const finalTranslateX = parseFloat(tabEl.style.left, 10)
           tabEl.style.transform = `translate3d(0, 0, 0)`
 
@@ -376,12 +377,16 @@
 
         draggabilly.on('dragMove', (event, pointer, moveVector) => {
           
-          
+          closesst = closest
           // Current index be computed within the event since it can change during the dragMove
           const tabEls = this.tabEls
+          changethething = this
+          yeet = tabEl
+          originalTabPositionXX = originalTabPositionX
+          tabPositionss = tabPositions
           const currentIndex = tabEls.indexOf(tabEl)
-          console.log(tabEls.indexOf(tabEl))
-          const currentTabPositionX = originalTabPositionX + moveVector.x
+          vector = moveVector.x 
+          const currentTabPositionX = originalTabPositionX + moveVector.x +  increment
           const destinationIndexTarget = closest(currentTabPositionX, tabPositions)
           const destinationIndex = Math.max(0, Math.min(tabEls.length, destinationIndexTarget))
           if (currentIndex !== destinationIndex) {

@@ -81,13 +81,37 @@ function repeatWhileMouseOver(element, action, time) {
     });
 }
 let tab 
+let changethething
+let vector 
+let yeet
+let originalTabPositionXX
+let closesst
+let tabPositionss
+let increment = 0
 function goLeft() {
+    
+    console.log('called')
     if (isDragging === true) {
-        animatio(test, .5, "left")
-        console.log(parseInt(tab.style.left, 10))
+        animatio(test, 1.5, "left")
         let current = parseInt(tab.style.left, 10)
-        tab.style.left = `${current - .5}px`
-        // tab.draggabillyDragging.position.x = current - .5
+        tab.style.left = `${current - 1.5}px`
+        increment = increment - 2
+        console.log(increment, "inc")
+        const tabEls = changethething.tabEls
+        
+        
+        const currentIndex = tabEls.indexOf(yeet)
+        
+        const currentTabPositionX = originalTabPositionXX + vector + increment
+        console.log(vector, increment )
+        const destinationIndexTarget = closesst(currentTabPositionX, tabPositionss)
+        const destinationIndex = Math.max(0, Math.min(tabEls.length, destinationIndexTarget))
+        console.log(destinationIndexTarget, destinationIndex, "in tar")
+        if (currentIndex !== destinationIndex) {
+            changethething.animateTabMove(yeet, currentIndex, destinationIndex)
+            console.log("called")
+        }
+
      
     }
     
